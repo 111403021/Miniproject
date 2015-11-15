@@ -1,3 +1,20 @@
+/*****************************************************************************
+ * Copyright (C) Aishwarya Ramesh Latane   latanear14.comp@coep.ac.in
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation; either version 2.1 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
+ *****************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -72,38 +89,6 @@ int length(list *l) {
 	return l->length;	
 }
 
-/*void reverse(list *l) {
-	node *p, *q, *r;
-	if(l->head == l->tail)
-	if(l->length == 2) {
-		p = l->tail;
-		l->tail = l->head;
-		l->head = p;
-		return;
-	}		
-	q = l->head;
-	p = q->next;
-	r = p->next;
-	while(q != r) {
-		p->next = q;
-		q = p;	
-		p = r;
-		r = r->next;
-	}
-	l->head  = q->next;
-
-	q = l->tail;
-	p = q->prev;
-	r = p->prev;
-	while(q != r) {
-		p->prev = q;
-		q = p;	
-		p = r;
-		r = r->prev;
-	}
-	l->tail = q->prev;
-}
-*/
 void SeatReservation(list *l, int BusNum) {/*reserve seat of asked bus*/
 
 	int index;
@@ -211,19 +196,15 @@ void fnDailyReport(list *l) {
 		i++;
 		p = p->next;
 	}
+	if(p) {
+		dBusTotal = (p->str->Ticketsold)*(p->str->fFare);
+		printf("\n\t\t\tBus no-\t%d\t Total tickets Sold-\t%d", i, p->str->Ticketsold);
+		printf("\n\t\t\tTotal Fare-\t%.4lf\n", dBusTotal);
+		dDailyTotal += dBusTotal;
+		i++;
+	}	
 	
-	//if(p) {
-	//	dBusTotal = (p->str->Ticketsold)*(p->str->fFare);
-	//	printf("\n\t\t\tBus no-\t%d\t Total tickets Sold-\t%d", i, p->str->Ticketsold);
-	//	printf("\n\t\t\tTotal Fare-\t%.4lf\n", dBusTotal);
-	//	dDailyTotal += dBusTotal;
-	//	i++;
-	//}	
-		printf("\n\t\t\tBus No-\t1\t Total ticket Sold-\t2");
-	printf("\n\t\t\tTotal Fare_\t400");	
-	printf("\n\t\t\tBus No-\t2\t Total ticket Sold-\t0");
-	printf("\n\t\t\tTotal Fare_\t0");
-	printf("\n\n\t\t\tDaily Total = \t400");
+	printf("\n\n\t\t\tDaily Total = \t%lf",dDailyTotal);
 }
 
 void fnEmpty(Bus *str) { /*function prints empty in all the seats*/
