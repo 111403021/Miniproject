@@ -196,6 +196,7 @@ void fnDailyReport(list *l) {
 		i++;
 		p = p->next;
 	}
+	
 	if(p) {
 		dBusTotal = (p->str->Ticketsold)*(p->str->fFare);
 		printf("\n\t\t\tBus no-\t%d\t Total tickets Sold-\t%d", i, p->str->Ticketsold);
@@ -283,4 +284,3 @@ void fnPrintLine() {
 	for(j = 0;j < 70; j++)
 	printf("*");
 }
-
