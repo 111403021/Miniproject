@@ -22,3 +22,5 @@ Discription
  *It can also show daily report of bus depot.
  
  * It can also cancel the ticket . After cancelling shows layout of bus .
+ 
+ *It also handle all the possible conditions
